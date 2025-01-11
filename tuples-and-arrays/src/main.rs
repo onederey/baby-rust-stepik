@@ -61,3 +61,93 @@ fn destruct() {
     let (a, b, c, d, e, f, g) = tup;
     println!("{a}, {b}, {c}, {d}, {e}, {f}, {g}");
 }
+
+fn print_array_el() {
+    let arr = [-1, 0, 1, 2, 30, 4, 500];
+
+    let mut inp = String::new();
+    std::io::stdin().read_line(&mut inp).unwrap();
+
+    print!("{}", arr[inp.trim().parse::<usize>().unwrap()]);
+}
+
+fn create_add_and_print() {
+    let mut input = String::new();
+    let mut arr = [0.; 5];
+
+    for i in 0..5 {
+        std::io::stdin().read_line(&mut input).unwrap();
+        arr[i] = input.trim().parse::<f64>().unwrap();
+        input.clear();
+    }
+
+    std::io::stdin().read_line(&mut input).unwrap();
+    println!("{:.2}", arr[input.trim().parse::<usize>().unwrap()]);
+}
+
+fn numeric_array_inspector() {
+    let mut input = String::new();
+    let mut arr = [0_usize; 5];
+
+    for i in 0..5 {
+        std::io::stdin().read_line(&mut input).unwrap();
+        arr[i] = input.trim().parse::<usize>().unwrap();
+        input.clear();
+    }
+
+    println!(
+        "{}, {}, {}, {}, {}",
+        arr[arr[0]], arr[arr[1]], arr[arr[2]], arr[arr[3]], arr[arr[4]]
+    );
+}
+
+fn static_array_modifier() {
+    let mut index_input = String::new();
+    let mut num_input = String::new();
+
+    std::io::stdin().read_line(&mut index_input).unwrap();
+    std::io::stdin().read_line(&mut num_input).unwrap();
+
+    let mut arr = [0; 10];
+    arr[index_input.trim().parse::<usize>().unwrap()] = num_input.trim().parse::<i32>().unwrap();
+    println!("{:?}", arr);
+}
+
+fn destruct_array() {
+    let arr = [0, 1, 1, 2, 3, 5];
+
+    let [a, b, c, d, e, f] = arr;
+
+    println!("{a}, {b}, {c}, {d}, {e}, {f}");
+}
+
+fn neighbours() {
+    let arr = [-5, 1, 8, 2, 30, 4000, 500000];
+
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+
+    let index = input.trim().parse::<usize>().unwrap();
+    print!(
+        "{}\n{}\n{}\n",
+        arr[index - 1] + arr[index + 1],
+        arr[index - 1] - arr[index + 1],
+        arr[index - 1] * arr[index + 1]
+    );
+}
+
+fn swap() {
+    let mut arr = [-621.5, 11.1, 2.0, -7.123, 0.125, 0.0, 0.000051789];
+
+    let mut input = String::new();
+
+    std::io::stdin().read_line(&mut input).unwrap();
+    let first = input.trim().parse::<usize>().unwrap();
+    input.clear();
+    std::io::stdin().read_line(&mut input).unwrap();
+    let second = input.trim().parse::<usize>().unwrap();
+
+    (arr[first], arr[second]) = (arr[second], arr[first]);
+
+    println!("{:.9?}", arr);
+}
